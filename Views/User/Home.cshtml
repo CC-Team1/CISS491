@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8"/>
+    <title>ADB Fishing Tournament</title>
+
+</head>
+<body>
+
+    @{ string tournament = ViewData ["Tournament"].ToString();
+        int totalParticipants = (int)ViewData["Participants"]; }
+
+    <p>Thank you for sign up for the @tournament.</p>
+    <p>Remaining spots; @totalParticipants</p>
+
+    @{ 
+        if(totalParticipants <= 50)
+            {
+        <p>Below are the chosen activities for this year</p>
+            }
+            else
+            {
+                <p>Registration is full.</p>
+            }
+    }
+    
+
+    <p>Select an event:</p>
+    @{ 
+        <select>
+            @foreach (string events in ViewData["Events"] as List<string>)
+            {
+                <option>@events</option>
+            }
+        </select>
+    }
+</body>
+</html>
